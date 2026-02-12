@@ -16,7 +16,7 @@ export default function Slideshow() {
     useEffect(() => {
         const interval = setInterval(() => {
         setIndex((prev) => (prev + 1) % images.length)
-        }, 2500) // change slide every 2.5s
+        }, 4000) // change slide every 2.5s
 
         return () => clearInterval(interval)
     }, [])
@@ -24,7 +24,7 @@ export default function Slideshow() {
     return (
         <div className="overflow-hidden w-full select-none">
             <div
-                className="flex transition-transform duration-700 ease-in-out"
+                className="flex transition-transform duration-1000 ease-in-out"
                 style={{
                     transform: `translateX(-${index * 100}%)`,
                 }}
