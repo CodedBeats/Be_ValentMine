@@ -20,6 +20,7 @@ export default function App() {
     const [isPumping, setIsPumping] = useState(false);
     const [showAsk, setShowAsk] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showQuestions, setShowQuestions] = useState(true);
 
     useEffect(() => {
         const timer = setTimeout(() => setLoading(false), 1800);
@@ -45,6 +46,7 @@ export default function App() {
 
     const handleFinalYes = () => {
         setShowModal(true);
+        setShowQuestions(false);
     };
 
     const handleFinalNo = () => {
@@ -60,23 +62,28 @@ export default function App() {
 
             {!loading && (
                 <>
-                    <HeartMeter progress={progress} isPumping={isPumping} />
+                    { showQuestions && (
+                        <>
+                        <HeartMeter progress={progress} isPumping={isPumping} />
 
-                    {!showAsk && (
-                        <QuestionCard
-                            question={questions[questionIndex]}
-                            onYes={handleYes}
-                            onNo={handleNo}
-                        />
-                    )}
+                        {!showAsk && (
+                            <QuestionCard
+                                question={questions[questionIndex]}
+                                onYes={handleYes}
+                                onNo={handleNo}
+                            />
+                        )}
 
-                    {showAsk && (
-                        <ValentineAsk
-                            name="August"
-                            onYes={handleFinalYes}
-                            onNo={handleFinalNo}
-                        />
+                        {showAsk && (
+                            <ValentineAsk
+                                name="August"
+                                onYes={handleFinalYes}
+                                onNo={handleFinalNo}
+                            />
+                        )}
+                        </>
                     )}
+                    
 
                     {showModal && <ValentineModal />}
                 </>
