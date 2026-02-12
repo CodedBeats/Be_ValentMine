@@ -1,2 +1,33 @@
 @import "tailwindcss";
+@tailwind utilities;
+
+* {
+    
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@keyframes pump {
+    0%, 100% { transform: scale(1) }
+    50% { transform: scale(1.08) }
+}
+
+@keyframes fall {
+    0% { transform: translateY(-10vh) }
+    100% { transform: translateY(110vh) }
+}
+
+.animate-fadeOut { animation: fadeOut 1.8s forwards }
+.animate-fadeIn { animation: fadeIn 1s forwards }
+.animate-pump { animation: pump 0.8s infinite }
+.animate-fall { animation: fall linear infinite }
+
 
